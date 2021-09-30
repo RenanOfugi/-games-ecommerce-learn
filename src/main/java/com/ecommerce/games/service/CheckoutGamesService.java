@@ -7,6 +7,7 @@ import com.ecommerce.games.mapper.CheckoutGamesMapper;
 import com.ecommerce.games.repository.CheckoutGamesRepository;
 import com.ecommerce.games.request.CheckoutGamesRequest;
 import lombok.RequiredArgsConstructor;
+import org.springframework.kafka.core.KafkaTemplate;
 import org.springframework.stereotype.Service;
 
 import java.util.UUID;
@@ -18,20 +19,26 @@ public class CheckoutGamesService {
     private final CheckoutGamesRepository repository;
     private final CheckoutGamesMapper mapper = CheckoutGamesMapper.INSTANCE;
 
-    public MessageResponseDTO create(CheckoutGamesRequest request){
+    private final KafkaTemplate<Object,Object> template;
 
-        CheckoutEntityDTO entityDTO = CheckoutEntityDTO.builder()
+    public MessageResponseDTO create(CheckoutGamesRequest gamesRequest){
+
+        CheckoutEntityDTO entityGamesDTO = CheckoutEntityDTO.builder()
                 .code(UUID.randomUUID().toString())
-                .firstName(request.getFirstName())
+                .firstName(gamesRequest.getFirstName())
                 .build();
 
-        CheckoutEntity checkout = mapper.toModel(entityDTO);
+        CheckoutEntity entityGames = mapper.toModel(entityGamesDTO);
 
-        /* inserir no BD*/
+        repository.save(entityGames);
 
         return MessageResponseDTO.builder()
                 .message("Checkout realizado com sucesso!")
-                .code(checkout.getCode())
+                .code(entityGames.getCode())
                 .build();
+    }
+
+    public <T> void addEventKafka(String topic, T data){
+        template.send(topic,data);
     }
 }
