@@ -20,6 +20,7 @@ public class GamesCheckoutController {
     @PostMapping("/")
     public ResponseEntity<MessageResponseDTO> create (@RequestBody CheckoutGamesRequest request){
         final MessageResponseDTO responseDTO = service.create(request);
+        service.addEventKafka("SalvaCheckout", request);
         return ResponseEntity.ok().body(responseDTO);
     }
 }
