@@ -19,6 +19,6 @@ spring:
             non_contextual_creation: true
   kafka:
     producer:
-      bootstrap-servers: 127.0.0.1:2181
+      bootstrap-servers: 127.0.0.1:9092
       value-serializer: org.springframework.kafka.support.serializer.JsonSerializer
       key-serializer: org.apache.kafka.common.serialization.StringSerializer
