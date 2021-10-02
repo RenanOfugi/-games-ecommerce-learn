@@ -6,7 +6,7 @@ import org.mapstruct.Mapper;
 import org.mapstruct.factory.Mappers;
 
 @Mapper
-public interface CheckoutGamesMapper {
-    CheckoutGamesMapper INSTANCE = Mappers.getMapper(CheckoutGamesMapper.class);
+public interface CheckoutEntityMapper {
+    CheckoutEntityMapper INSTANCE = Mappers.getMapper(CheckoutEntityMapper.class);
     CheckoutEntity toModel(CheckoutEntityDTO entityDTO);
 }

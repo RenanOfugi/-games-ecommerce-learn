@@ -3,10 +3,11 @@ package com.ecommerce.games.service;
 import com.ecommerce.games.dto.request.CheckoutEntityDTO;
 import com.ecommerce.games.dto.response.MessageResponseDTO;
 import com.ecommerce.games.entity.CheckoutEntity;
-import com.ecommerce.games.mapper.CheckoutGamesMapper;
+import com.ecommerce.games.mapper.CheckoutEntityMapper;
 import com.ecommerce.games.repository.CheckoutGamesRepository;
 import com.ecommerce.games.request.CheckoutGamesRequest;
 import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.kafka.core.KafkaTemplate;
 import org.springframework.stereotype.Service;
 
@@ -16,8 +17,9 @@ import java.util.UUID;
 @RequiredArgsConstructor
 public class CheckoutGamesService {
 
+    @Autowired
     private final CheckoutGamesRepository repository;
-    private final CheckoutGamesMapper mapper = CheckoutGamesMapper.INSTANCE;
+    private final CheckoutEntityMapper mapper = CheckoutEntityMapper.INSTANCE;
 
     private final KafkaTemplate<Object,Object> template;
 

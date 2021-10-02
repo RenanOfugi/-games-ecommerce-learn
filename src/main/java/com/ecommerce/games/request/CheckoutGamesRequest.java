@@ -12,7 +12,7 @@ import java.util.List;
 @NoArgsConstructor
 public class CheckoutGamesRequest implements Serializable {
     private String firstName;
-    private String lastName;
+    /*private String lastName;
     private String email;
     private String address;
     private String complement;
@@ -26,5 +26,5 @@ public class CheckoutGamesRequest implements Serializable {
     private String cardNumber;
     private String cardDate;
     private String cardCvv;
-    private List<String> products;
+    private List<String> products;*/
 }

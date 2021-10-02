@@ -3,10 +3,7 @@ package com.ecommerce.games.entity;
 import lombok.*;
 import org.hibernate.Hibernate;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.util.Objects;
 
 @Entity
@@ -19,13 +16,13 @@ import java.util.Objects;
 public class CheckoutEntity {
 
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column
+    @Column(nullable = false)
     private String code;
 
-    @Column
+    @Column(nullable = false)
     private String firstName;
 
     @Override

@@ -4,6 +4,7 @@ import com.ecommerce.games.dto.response.MessageResponseDTO;
 import com.ecommerce.games.request.CheckoutGamesRequest;
 import com.ecommerce.games.service.CheckoutGamesService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -15,9 +16,10 @@ import org.springframework.web.bind.annotation.RestController;
 @RequiredArgsConstructor
 public class GamesCheckoutController {
 
+    @Autowired
     private final CheckoutGamesService service;
 
-    @PostMapping("/")
+    @PostMapping()
     public ResponseEntity<MessageResponseDTO> create (@RequestBody CheckoutGamesRequest request){
         final MessageResponseDTO responseDTO = service.create(request);
         service.addEventKafka("SalvaCheckout", request);
