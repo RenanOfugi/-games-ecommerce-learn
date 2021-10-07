@@ -19,10 +19,10 @@ public class CheckoutEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(nullable = false)
+    @Column
     private String code;
 
-    @Column(nullable = false)
+    @Column
     private String firstName;
 
     @Override
