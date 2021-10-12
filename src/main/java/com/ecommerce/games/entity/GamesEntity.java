@@ -4,36 +4,23 @@ import lombok.*;
 import org.hibernate.Hibernate;
 
 import javax.persistence.*;
-import java.util.List;
 import java.util.Objects;
 
 @Entity
-@Builder
 @Getter
 @Setter
 @ToString
 @RequiredArgsConstructor
+@Builder
 @AllArgsConstructor
-public class CheckoutEntity {
+public class GamesEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     @Column
-    private String code;
-
-    @Column
-    private String firstName;
-
-    @Column
-    private String lastName;
-
-    @Column
-    private String email;
-
-    @OneToMany(fetch = FetchType.LAZY, cascade = {CascadeType.PERSIST, CascadeType.REMOVE, CascadeType.MERGE})
-    private List<GamesEntity> games;
+    private String nameGame;
 
     @Column
     private String value;
@@ -42,8 +29,8 @@ public class CheckoutEntity {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || Hibernate.getClass(this) != Hibernate.getClass(o)) return false;
-        CheckoutEntity that = (CheckoutEntity) o;
-        return Objects.equals(id, that.id);
+        GamesEntity that = (GamesEntity) o;
+        return id != null && Objects.equals(id, that.id);
     }
 
     @Override

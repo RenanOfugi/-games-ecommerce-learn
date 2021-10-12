@@ -28,6 +28,10 @@ public class CheckoutGamesService {
         CheckoutEntityDTO entityGamesDTO = CheckoutEntityDTO.builder()
                 .code(UUID.randomUUID().toString())
                 .firstName(gamesRequest.getFirstName())
+                .lastName(gamesRequest.getLastName())
+                .email(gamesRequest.getEmail())
+                .games(gamesRequest.getGames())
+                .value(gamesRequest.getValue())
                 .build();
 
         CheckoutEntity entityGames = mapper.toModel(entityGamesDTO);

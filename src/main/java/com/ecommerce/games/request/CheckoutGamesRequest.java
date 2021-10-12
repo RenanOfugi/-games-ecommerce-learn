@@ -1,5 +1,7 @@
 package com.ecommerce.games.request;
 
+import com.ecommerce.games.dto.request.GamesEntityDTO;
+import com.ecommerce.games.entity.GamesEntity;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -12,19 +14,8 @@ import java.util.List;
 @NoArgsConstructor
 public class CheckoutGamesRequest implements Serializable {
     private String firstName;
-    /*private String lastName;
+    private String lastName;
     private String email;
-    private String address;
-    private String complement;
-    private String country;
-    private String state;
-    private String cep;
-    private Boolean saveAddress;
-    private Boolean saveInfo;
-    private String paymentMethod;
-    private String cardName;
-    private String cardNumber;
-    private String cardDate;
-    private String cardCvv;
-    private List<String> products;*/
+    private List<GamesEntityDTO> games;
+    private String value;
 }
